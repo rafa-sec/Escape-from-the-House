@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="start">
+    <div>
+    <h1>Escape from the house</h1>
+    <button onclick="start()">Start</button>
+    </div>
+</section>
+
+<section class="rooms">
+    <div id="bedroom" style="display: none;">
+        <h2>Bedroom</h2>
+        <img src="./cenarios/Bedroom.png" alt="">
+    </div>
+
+    <div id="livingroom" style="display: none;">
+        <h2>Livingroom</h2>
+        <img width="1240px" src="./cenarios/Livingroom.png" alt="">
+    </div>
+
+    <div id="kitchen" style="display: none;">
+        <h2>Kitchen</h2>
+        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+    </div>
+
+    <div id="garage" style="display: none;">
+        <h2>Garage</h2>
+        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+    </div>
+
+    <div id="backyard" style="display: none;">
+        <h2>Backyard</h2>
+        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+    </div>
+</section>
+
+
+<section id="menu" style="display: none;">
+
+<div>
+    <button>See inventory</button>
+    <button>Look for something in the room</button>
+    <button onclick="walk()">Walk</button>
+    <button style="display: none;">Shoot</button>
+</div>
+
+<div style="display: none;" id="walkMenu">
+    <button onclick="goToBedroom()">Bedroom</button>
+    <button onclick="goToLivingroom()">Livingroom</button>
+    <button onclick="goToKitchen()">Kitchen</button>
+    <button onclick="goToGarage()">Garage</button>
+    <button onclick="goToBackyard()">Backyard</button>
+</div>
+
+</section>
+
+
+
+</body>
+
+
+<script>
+actions = 1
+function makeAction() {
+    actions -= 1
+}
+
+
+menu = document.getElementById("menu")
+startMenu = document.getElementById("start")
+walkMenu = document.getElementById("walkMenu")
+
+
+//Places
+const bedroom = document.getElementById("bedroom")
+const livingroom = document.getElementById("livingroom")
+const kitchen = document.getElementById("kitchen")
+const garage = document.getElementById("garage")
+const backyard = document.getElementById("backyard")
+
+
+//Scenario
+var currentScenario = ["bedroom","livingroom","kitchen","garage","backyard"]
+var currentIndex = 0
+
+function showScenario(){
+
+    if(currentIndex === 0){
+        alert(currentScenario[0])
+        bedroom.style.display = "block"
+        livingroom.style.display = "none"
+        kitchen.style.display = "none"
+        garage.style.display = "none"
+        backyard.style.display = "none"
+    }else if(currentIndex === 1){
+        alert(currentScenario[1])
+        livingroom.style.display = "block"
+
+        bedroom.style.display = "none"
+        kitchen.style.display = "none"
+        garage.style.display = "none"
+        backyard.style.display = "none"
+    }else if(currentIndex === 2){
+        alert(currentScenario[2])
+        kitchen.style.display = "block"
+
+        livingroom.style.display = "none"
+        bedroom.style.display = "none"
+        garage.style.display = "none"
+        backyard.style.display = "none"
+    }else if(currentIndex === 3){
+        alert(currentScenario[3])
+        garage.style.display = "block"
+
+        livingroom.style.display = "none"
+        kitchen.style.display = "none"
+        bedroom.style.display = "none"
+        backyard.style.display = "none"
+    }else if(currentIndex === 4){
+        alert(currentScenario[3])
+        backyard.style.display = "block"
+
+        livingroom.style.display = "none"
+        kitchen.style.display = "none"
+        garage.style.display = "none"
+        bedroom.style.display = "none"
+    }
+
+}
+
+
+//Start
+
+function start(){
+    startMenu.style.display = "none"
+    menu.style.display = "block"
+    currentIndex = 0
+    showScenario()
+}
+
+
+
+//Menu
+
+function walk(){
+    walkMenu.style.display = "block"
+}
+
+
+//Locomotion
+function goToBedroom(){
+    currentIndex = 0
+    showScenario()
+}
+
+function goToLivingroom(){
+    currentIndex = 1
+    showScenario()
+}
+
+function goToKitchen(){
+    currentIndex = 2
+    showScenario()
+}
+
+function goToGarage(){
+    currentIndex = 3
+    showScenario()
+}
+
+function goToBackyard(){
+    currentIndex = 4
+    showScenario()
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
