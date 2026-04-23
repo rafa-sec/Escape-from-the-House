@@ -28,17 +28,17 @@
 
     <div id="kitchen" style="display: none;">
         <h2>Kitchen</h2>
-        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+        <img width="1240px" src="./cenarios/Kitchen.png" alt="">
     </div>
 
     <div id="garage" style="display: none;">
         <h2>Garage</h2>
-        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+        <img width="1240px" src="./cenarios/Garage.png" alt="">
     </div>
 
     <div id="backyard" style="display: none;">
         <h2>Backyard</h2>
-        <img width="1240px" src="./cenarios/Bedroom.png" alt="">
+        <img width="1240px" src="./cenarios/Backyard.png" alt="">
     </div>
 </section>
 
@@ -53,11 +53,11 @@
 </div>
 
 <div style="display: none;" id="walkMenu">
-    <button onclick="goToBedroom()">Bedroom</button>
-    <button onclick="goToLivingroom()">Livingroom</button>
-    <button onclick="goToKitchen()">Kitchen</button>
-    <button onclick="goToGarage()">Garage</button>
-    <button onclick="goToBackyard()">Backyard</button>
+    <button id="bedroomButton" onclick="goToBedroom()">Bedroom</button>
+    <button id="livingroomButton" onclick="goToLivingroom()">Livingroom</button>
+    <button id="kitchenButton"  onclick="goToKitchen()">Kitchen</button>
+    <button id="garageButton" onclick="goToGarage()">Garage</button>
+    <button id="backyardButton" onclick="goToBackyard()">Backyard</button>
 </div>
 
 </section>
@@ -74,6 +74,9 @@ function makeAction() {
     actions -= 1
 }
 
+
+
+
     
 //Menus
 menu = document.getElementById("menu")
@@ -87,6 +90,12 @@ const livingroom = document.getElementById("livingroom")
 const kitchen = document.getElementById("kitchen")
 const garage = document.getElementById("garage")
 const backyard = document.getElementById("backyard")
+
+const bedroomButton = document.getElementById("bedroomButton")
+const livingroomButton = document.getElementById("livingroomButton")
+const kitchenButton = document.getElementById("kitchenButton")
+const garageButton = document.getElementById("garageButton")
+const backyardButton = document.getElementById("backyardButton")
 
 
 //Scenario
@@ -102,6 +111,12 @@ function showScenario(){
         kitchen.style.display = "none"
         garage.style.display = "none"
         backyard.style.display = "none"
+
+        bedroomButton.style.display = "none"
+        livingroomButton.style.display = "block"
+        kitchenButton.style.display = "none"
+        garageButton.style.display = "none"
+        backyardButton.style.display = "none"
     }else if(currentIndex === 1){
         alert(currentScenario[1])
         livingroom.style.display = "block"
@@ -110,6 +125,12 @@ function showScenario(){
         kitchen.style.display = "none"
         garage.style.display = "none"
         backyard.style.display = "none"
+
+        livingroomButton.style.display = "none"
+        bedroomButton.style.display = "block"
+        kitchenButton.style.display = "block"
+        garageButton.style.display = "none"
+        backyardButton.style.display = "none"
     }else if(currentIndex === 2){
         alert(currentScenario[2])
         kitchen.style.display = "block"
@@ -118,6 +139,13 @@ function showScenario(){
         bedroom.style.display = "none"
         garage.style.display = "none"
         backyard.style.display = "none"
+
+        kitchenButton.style.display = "none"
+
+        bedroomButton.style.display = "none"
+        livingroomButton.style.display = "block"
+        garageButton.style.display = "block"
+        backyardButton.style.display = "none"
     }else if(currentIndex === 3){
         alert(currentScenario[3])
         garage.style.display = "block"
@@ -126,6 +154,15 @@ function showScenario(){
         kitchen.style.display = "none"
         bedroom.style.display = "none"
         backyard.style.display = "none"
+
+
+        garageButton.style.display = "none"
+
+        
+        kitchenButton.style.display = "block"
+        bedroomButton.style.display = "none"
+        livingroomButton.style.display = "none"
+        backyardButton.style.display = "block"
     }else if(currentIndex === 4){
         alert(currentScenario[3])
         backyard.style.display = "block"
@@ -134,6 +171,12 @@ function showScenario(){
         kitchen.style.display = "none"
         garage.style.display = "none"
         bedroom.style.display = "none"
+
+        backyardButton.style.display = "none"
+        garageButton.style.display = "block"
+        kitchenButton.style.display = "none"
+        bedroomButton.style.display = "none"
+        livingroomButton.style.display = "none"
     }
 
 }
@@ -158,6 +201,7 @@ function showWalkMenu(){
 
 
 //Locomotion
+
 function goToBedroom(){
     currentIndex = 0
     showScenario()
