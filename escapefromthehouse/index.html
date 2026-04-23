@@ -76,7 +76,6 @@ function makeAction() {
 
 
 
-
     
 //Menus
 menu = document.getElementById("menu")
@@ -84,102 +83,63 @@ startMenu = document.getElementById("start")
 walkMenu = document.getElementById("walkMenu")
 
 
-//Places
-const bedroom = document.getElementById("bedroom")
-const livingroom = document.getElementById("livingroom")
-const kitchen = document.getElementById("kitchen")
-const garage = document.getElementById("garage")
-const backyard = document.getElementById("backyard")
-
-const bedroomButton = document.getElementById("bedroomButton")
-const livingroomButton = document.getElementById("livingroomButton")
-const kitchenButton = document.getElementById("kitchenButton")
-const garageButton = document.getElementById("garageButton")
-const backyardButton = document.getElementById("backyardButton")
+//Rooms
+const rooms = [
+    { id: "bedroom", connections: ["livingroom"] },
+    { id: "livingroom", connections: ["bedroom", "kitchen"] },
+    { id: "kitchen", connections: ["livingroom", "garage"] },
+    { id: "garage", connections: ["kitchen", "backyard"] },
+    { id: "backyard", connections: ["garage"] }
+];
 
 
-//Scenario
-var currentScenario = ["bedroom","livingroom","kitchen","garage","backyard"]
-var currentIndex = 0
-
-function showScenario(){
-
-    if(currentIndex === 0){
-        alert(currentScenario[0])
-        bedroom.style.display = "block"
-        livingroom.style.display = "none"
-        kitchen.style.display = "none"
-        garage.style.display = "none"
-        backyard.style.display = "none"
-
-        bedroomButton.style.display = "none"
-        livingroomButton.style.display = "block"
-        kitchenButton.style.display = "none"
-        garageButton.style.display = "none"
-        backyardButton.style.display = "none"
-    }else if(currentIndex === 1){
-        alert(currentScenario[1])
-        livingroom.style.display = "block"
-
-        bedroom.style.display = "none"
-        kitchen.style.display = "none"
-        garage.style.display = "none"
-        backyard.style.display = "none"
-
-        livingroomButton.style.display = "none"
-        bedroomButton.style.display = "block"
-        kitchenButton.style.display = "block"
-        garageButton.style.display = "none"
-        backyardButton.style.display = "none"
-    }else if(currentIndex === 2){
-        alert(currentScenario[2])
-        kitchen.style.display = "block"
-
-        livingroom.style.display = "none"
-        bedroom.style.display = "none"
-        garage.style.display = "none"
-        backyard.style.display = "none"
-
-        kitchenButton.style.display = "none"
-
-        bedroomButton.style.display = "none"
-        livingroomButton.style.display = "block"
-        garageButton.style.display = "block"
-        backyardButton.style.display = "none"
-    }else if(currentIndex === 3){
-        alert(currentScenario[3])
-        garage.style.display = "block"
-
-        livingroom.style.display = "none"
-        kitchen.style.display = "none"
-        bedroom.style.display = "none"
-        backyard.style.display = "none"
+//Set rooms' elements (image, button)
+const roomElements = {};
+rooms.forEach(room => {
+    roomElements[room.id] = document.getElementById(room.id);
+});
 
 
-        garageButton.style.display = "none"
+//Set current room
+let currentRoom = "bedroom";
 
-        
-        kitchenButton.style.display = "block"
-        bedroomButton.style.display = "none"
-        livingroomButton.style.display = "none"
-        backyardButton.style.display = "block"
-    }else if(currentIndex === 4){
-        alert(currentScenario[3])
-        backyard.style.display = "block"
+//Show room and its properties
+function showRoom() {
 
-        livingroom.style.display = "none"
-        kitchen.style.display = "none"
-        garage.style.display = "none"
-        bedroom.style.display = "none"
+    //Hide all rooms
+    rooms.forEach(room => {
+        roomElements[room.id].style.display = "none";
+    });
 
-        backyardButton.style.display = "none"
-        garageButton.style.display = "block"
-        kitchenButton.style.display = "none"
-        bedroomButton.style.display = "none"
-        livingroomButton.style.display = "none"
-    }
+    //Show current room
+    roomElements[currentRoom].style.display = "block";
 
+    updateWalkMenu();
 }
+
+
+
+function updateWalkMenu() {
+
+    walkMenu.innerHTML = ""; // Clean old buttons
+
+    const room = rooms.find(r => r.id === currentRoom);
+
+    room.connections.forEach(conn => {
+
+        const btn = document.createElement("button");
+        btn.textContent = conn;
+
+        btn.onclick = () => {
+            currentRoom = conn;
+            showRoom();
+        };
+
+    walkMenu.appendChild(btn);
+});
+}
+
+
 
 
 //Start
@@ -187,8 +147,9 @@ function showScenario(){
 function start(){
     startMenu.style.display = "none"
     menu.style.display = "block"
-    currentIndex = 0
-    showScenario()
+
+    currentRoom = "bedroom";
+    showRoom();
 }
 
 
@@ -197,34 +158,6 @@ function start(){
 
 function showWalkMenu(){
     walkMenu.style.display = "block"
-}
-
-
-//Locomotion
-
-function goToBedroom(){
-    currentIndex = 0
-    showScenario()
-}
-
-function goToLivingroom(){
-    currentIndex = 1
-    showScenario()
-}
-
-function goToKitchen(){
-    currentIndex = 2
-    showScenario()
-}
-
-function goToGarage(){
-    currentIndex = 3
-    showScenario()
-}
-
-function goToBackyard(){
-    currentIndex = 4
-    showScenario()
 }
 </script>
 
