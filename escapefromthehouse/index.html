@@ -48,7 +48,7 @@
 <div>
     <button>See inventory</button>
     <button>Look for something in the room</button>
-    <button onclick="walk()">Walk</button>
+    <button onclick="showWalkMenu()">Walk</button>
     <button style="display: none;">Shoot</button>
 </div>
 
@@ -68,12 +68,14 @@
 
 
 <script>
+//Action count per round
 actions = 1
 function makeAction() {
     actions -= 1
 }
 
-
+    
+//Menus
 menu = document.getElementById("menu")
 startMenu = document.getElementById("start")
 walkMenu = document.getElementById("walkMenu")
@@ -150,7 +152,7 @@ function start(){
 
 //Menu
 
-function walk(){
+function showWalkMenu(){
     walkMenu.style.display = "block"
 }
 
