@@ -3,85 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Escape Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section id="start">
     <div>
-    <h1>Escape from the house</h1>
-    <button onclick="start()">Start</button>
+        <h1>Escape from the house</h1>
+        <button id="startBtn">Start</button>
     </div>
 </section>
 
 <section class="rooms">
     <div id="bedroom" style="display: none;">
         <h2>Bedroom</h2>
-        <img class="background" src="./cenarios/Bedroom.png" alt="">
-        <img src="killer.png" style="width: 500px;" class="killer" id="killer-bedroom" alt="Killer">
+        <img class="background" src="./scenarios/Bedroom.png" alt="">
+        <img src="killer.png" style="width: 22%;" class="killer" id="killer-bedroom" alt="Killer">
     </div>
 
     <div id="livingroom" style="display: none;">
         <h2>Livingroom</h2>
-        <img class="background" width="1240px" src="./cenarios/Livingroom.png" alt="">
-        <img src="killer.png" style="width: 500px;" class="killer" id="killer-livingroom" alt="Killer">
+        <img class="background" width="1240px" src="./scenarios/Livingroom.png" alt="">
+        <img src="killer.png" style="width: 22%;" class="killer" id="killer-livingroom" alt="Killer">
     </div>
 
     <div id="kitchen" style="display: none;">
         <h2>Kitchen</h2>
-        <img class="background" width="1240px" src="./cenarios/Kitchen.png" alt="">
-        <img src="killer.png" style="width: 500px;" class="killer" id="killer-kitchen" alt="Killer">
+        <img class="background" width="1240px" src="./scenarios/Kitchen.png" alt="">
+        <img src="killer.png" style="width: 22%;" class="killer" id="killer-kitchen" alt="Killer">
     </div>
 
     <div id="garage" style="display: none;">
         <h2>Garage</h2>
-        <img class="background" width="1240px" src="./cenarios/Garage.png" alt="">
-        <img src="killer.png" style="width: 500px;" class="killer" id="killer-garage" alt="Killer">
+        <img class="background" width="1240px" src="./scenarios/Garage.png" alt="">
+        <img src="killer.png" style="width: 22%;" class="killer" id="killer-garage" alt="Killer">
     </div>
 
     <div id="backyard" style="display: none;">
         <h2>Backyard</h2>
-        <img class="background" width="1240px" src="./cenarios/Backyard.png" alt="">
-        <img src="killer.png" style="width: 500px;" class="killer" id="killer-backyard" alt="Killer">
+        <img class="background" width="1240px" src="./scenarios/Backyard.png" alt="">
+        <img src="killer.png" style="width: 22%;" class="killer" id="killer-backyard" alt="Killer">
     </div>
 
 </section>
 
+<img  id="pistolHand" style="display: none;" src="Pistol.png" alt="Pistol">
 
 <section id="menu" style="display: none;">
+    <div>
+        <button id="seeInventoryBtn">Inventory</button>
+        <button id="lookForSomethingBtn">Look for something</button>
+        <button id="walkBtn">Walk</button>
+        <button id="shootBtn" style="display: none;">Shoot</button>
+    </div>
 
-<div>
-    <button>See inventory</button>
-    <button>Look for something in the room</button>
-    <button onclick="showWalkMenu()">Walk</button>
-    <button style="display: none;">Shoot</button>
-</div>
-
-<div style="display: none;" id="walkMenu">
-    <button id="bedroomButton" onclick="goToBedroom()">Bedroom</button>
-    <button id="livingroomButton" onclick="goToLivingroom()">Livingroom</button>
-    <button id="kitchenButton"  onclick="goToKitchen()">Kitchen</button>
-    <button id="garageButton" onclick="goToGarage()">Garage</button>
-    <button id="backyardButton" onclick="goToBackyard()">Backyard</button>
-</div>
-
+    <div id="walkMenu" style="display: none;"></div>
 </section>
 
-
+<script type="module" src="main.js"></script>
 
 </body>
-
-<script src="script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
 </html>
